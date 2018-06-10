@@ -24,7 +24,7 @@ jobs:
       - checkout
         
       # run coverage!
-      - run: mvn clean
+      - run: mvn --batch-mode clean
   deployment:
     docker:
       # specify the version you desire here
@@ -45,7 +45,7 @@ jobs:
       - checkout
         
       # run deployment!
-      - run: mvn deploy -Dmaven.test.skip -DcreateDocs=true -s settings.xml
+      - run: mvn --batch-mode deploy -Dmaven.test.skip -DcreateDocs=true -s settings.xml
   build:
     docker:
       # specify the version you desire here
@@ -66,7 +66,7 @@ jobs:
       - checkout
         
       # run tests!
-      - run: mvn test
+      - run: mvn --batch-mode test
       
       - run: bash <(curl -s https://codecov.io/bash)
 workflows:
